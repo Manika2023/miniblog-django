@@ -1,0 +1,45 @@
+
+{% extends "blog/base.html" %}
+ {% load static %}
+ {% block title %}Blog{% endblock title %}
+  {% block blogactive %} active
+{% endblock blogactive %}
+ {% block css %}
+<style>
+  .btn-pagination{
+    text-decoration: none;
+}
+ .container{
+  min-height:100vh;
+ }
+</style>
+{% endblock css %} 
+{% block content %}
+<div class="container">
+     <h2 class="my-3">Welcome to Real Coders Blog</h2>
+     {% for blog in blogs %}
+     <div class="my-4 jumbo-color p-4">
+          <h5 class=""><a href="/blogpost/{{blog.id}}" class="text-warning">{{blog.title}}</a></h5>
+          <div class="my-2">
+            {{blog.desc|safe|slice:200}}...
+          </div>
+          <div>
+          <a href="/blogpost/{{blog.id}}" class="text-dark"><button class="btn btn-primary btn-sm">Read More...</button></a> 
+         </div>
+        </div>
+     {% endfor %}
+     <div class="my-3">
+       {% if prev %}
+     <button class="btn btn-success"><a href="/blog?page={{prev}} " class="text-light btn-pagination">&laquo; previous</a></button>
+     {% else %}
+     <button class="btn btn-success"><a href="#" class="text-light btn-pagination">&laquo; previous</a></button>
+     {% endif %}
+     {% if nxt  %}
+     <button class="btn btn-success float-right"><a href="/blog?page={{nxt}}" class="text-light btn-pagination">Next &raquo; </a></button>
+     {% else %}
+     <button class="btn btn-success float-right"><a href="#" class="text-light btn-pagination">Next &raquo; </a></button>
+     {% endif %}
+     </div>
+     </div>
+     </div>
+{% endblock content %}

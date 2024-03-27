@@ -1,0 +1,27 @@
+{% extends "blog/base.html" %} 
+{% block homeactive %} active {% endblock homeactive %}
+{% load static %}
+{% block css %}
+<style>
+     .container {
+          min-height: 90vh;
+        }
+  
+   </style>
+   {% endblock css %}
+{% block content %}
+
+<div class="col-sm-12">
+      <div  class="container">
+     <div class="mt-4 p-3 text-white rounded jumbo-color">
+       <h1 class="text-warning">welcome  {{full_name}}</h1>
+       <p class="">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis, deleniti.
+
+      </p>
+      <a href="{% url 'dashboard' %}" class="text-dark">
+        <button class="btn btn-primary btn-sm mt-4">Dashboard</button></a> 
+     </div>
+   </div>
+  </div>
+{% endblock content %}

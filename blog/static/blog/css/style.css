@@ -1,0 +1,18 @@
+body{
+     background: rgb(75,74,74);
+     color: antiquewhite;
+}
+.form-control{
+    background: rgb(177,168,168);
+}
+.jumbo-color{
+     background:rgb(83,81,81);
+}
+/* rgb(83,81,81) */
+.carousel-item img{
+     height: 400px;
+     width: 100%;
+}
+.post-container{
+    min-height: 100vh;
+}

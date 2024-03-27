@@ -1,0 +1,22 @@
+
+{% extends "blog/base.html" %}
+ {% load static %}
+ {% block title %}Post{% endblock title %}
+  {% block aboutactive %} active
+{% endblock aboutactive %}
+ {% block css %}
+ <style>
+  .container{
+   min-height:100vh;
+  }
+ </style>
+{% endblock css %} 
+{% block content %}
+<div class="container post-container">
+     <h1 class="my-3 text-warning">{{posts.title}}</h1>
+    <pre class="row jumbo-color p-4">
+          {{posts.desc|safe}}
+  </pre> 
+</div>
+{% endblock content %}
+

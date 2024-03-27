@@ -1,0 +1,24 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block title %}update{% endblock title %}
+{% block content %}
+ {% block msg %}
+ {% if message %}
+ <div  class="alert alert-info alert-dismissible fade show my-3" role="alert">
+  <strong>Your Data Has Successfully updated! </strong> 
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+ {% endif %}
+ {% endblock msg %} 
+
+<div class="col-sm-10">
+<h3 class="text-white my-5"> Dashboard/ Update Post</h3>
+
+<form action="" method="POST">
+     {% csrf_token %}
+     {{form.as_p}}
+     <a href="{% url 'dashboard' %}" class="btn btn-danger">Back</a>
+     <input type="submit" value="Add" class="btn btn-warning">
+</form>
+</div>
+{% endblock content %}

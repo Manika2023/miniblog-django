@@ -1,0 +1,53 @@
+{% extends "blog/base.html" %} 
+{% load static %}
+{% block title %}contact{% endblock title %}
+{% block contactactive %} active {% endblock contactactive %} 
+{% block css %}
+<style>
+ .contact img{
+  margin-top: 1.5rem;
+  height: 350px;
+  width: 100%;
+ }
+</style>
+{% endblock css %} 
+{% block content %}
+<div class="container-fluid">
+  <h2 class="text-center py-4 text-warning">contact me</h2>
+
+<div class="row">
+  <div class="col-sm-4 contact">
+    <img src="{% static 'blog/image/contact.avif' %}" alt="not loaded">
+  </div>
+
+  <div class="col-sm-8">
+    <form action="/contact/" method="post">
+     {% csrf_token %}
+      {% if message %}
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Congratulations! </strong>your data has been submmited succcessfully
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endif %}
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" name="name" class="form-control" id="name" placeholder="enter your name" required>
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label" >phone number</label>
+        <input type="tel" name="phone" class="form-control" id="phone" placeholder="enter your name" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+      </div>
+      <div class="mb-3">
+        <label for="desc" class="form-label">How may we help you?</label>
+        <textarea class="form-control" name="desc" id="desc" rows="3"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
+</div>
+{% endblock content %}

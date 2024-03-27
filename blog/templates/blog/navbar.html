@@ -1,0 +1,48 @@
+
+<div class="container-fluid bg-light px-5 p-1">
+  <form class="d-flex" role="search" action="/search" method="get">
+    <input class="form-control me-2 text-warning" name="post_title" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-primary" type="submit">Search</button>
+  </form>
+</div>
+<nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+     <div class="container-fluid">
+       <a class="navbar-brand" href="/">RealCoders</a>
+       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+       </button>
+       <div class="collapse navbar-collapse" id="navbarNav">
+         <ul class="navbar-nav">
+           <li class="nav-item">
+             <a class="nav-link  {% block homeactive %} {% endblock homeactive %}" aria-current="page" href="/">Home</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link {% block aboutactive %} {% endblock aboutactive %}" href="{% url 'about' %}">About</a>
+           </li>
+           <li class="nav-item">
+            <a class="nav-link {% block blogactive %}{% endblock blogactive %}" href="{% url 'blog' %}">Blog</a>
+          </li>
+           <li class="nav-item">
+             <a class="nav-link {% block contactactive %}{% endblock contactactive %}" href="{% url 'contact' %}">Contact</a>
+           </li>
+  
+           {% comment %} is user log in {% endcomment %}
+           {% if request.user.is_authenticated %}
+           <li class="nav-item">
+            <a class="nav-link {% block dashboardactive %}{% endblock dashboardactive %}" href="{% url 'dashboard' %}">Dashboard</a>
+          </li>
+          <li class="nav-item">
+               <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+          </li>
+         {% else %}
+          <li class="nav-item">
+               <a class="nav-link {% block signupactive %} {% endblock signupactive %}" href="{% url 'signup' %}">Signup</a>
+          </li>
+          <li class="nav-item">
+               <a class="nav-link {% block loginactive %}{% endblock loginactive %}" href="{% url 'login' %}">Login</a>
+          </li>
+          {% endif %}
+         </ul>
+       </div>
+     </div>
+   </nav>

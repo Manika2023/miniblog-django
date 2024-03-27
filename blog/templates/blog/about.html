@@ -1,0 +1,36 @@
+{% extends "blog/base.html" %}
+ {% load static %}
+ {% block title %}about{% endblock title %}
+ {% block css %}
+<style>
+ .about img{
+  margin-top: 4rem;
+  height: 400px;
+  width: 89%;
+ }
+</style>
+{% endblock css %} 
+{% block aboutactive %} active {% endblock aboutactive %}
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 about">
+      <img src="{% static 'blog/image/slide3.avif' %}" alt="not loaded">
+    </div>
+
+    <div class="col-md-6">
+      <h3 class="text-warning my-5">About me</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id sint neque
+        ullam modi qui illo et cumque tempora, temporibus ratione iure suscipit
+        aspernatur blanditiis perspiciatis harum enim earum laborum est facilis
+        minima.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id sint neque
+        ullam modi qui illo et cumque tempora, temporibus ratione iure suscipit
+        aspernatur blanditiis perspiciatis harum enim earum laborum est facilis
+        minima.
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock content %}

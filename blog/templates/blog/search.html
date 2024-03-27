@@ -1,0 +1,28 @@
+{% extends "blog/base.html" %}
+{% load static %}
+{% block title %}Search{% endblock title %}
+{% comment %} {% block title %}Home{% endblock title %} {% endcomment %}
+{% block css %}
+<style>
+  .container {
+    min-height: 100vh;
+  }
+</style>
+{% endblock css %} 
+{% block homeactive %} active {% endblock homeactive %}
+{% block content %}
+<div class="container">
+  <h2 class="my-3 text-info">Welcome to Real Coders Blog</h2>
+  {% for blog in data %}
+  <div class="my-4  jumbo-color p-5">
+       <h5 class=""><a href="/blogpost/{{blog.id}}" class="text-warning">{{blog.title}}</a></h5>
+       <div class="my-2">
+         {{blog.desc|slice:200}}...
+       </div>
+       <a href="/blogpost/{{blog.id}}" class="text-dark"><button class="btn btn-primary btn-sm my-2">Read More...</button></a> 
+     </div>
+     {% empty %}
+     <h1>no data found</h1>   
+  {% endfor %}
+    </div>
+{% endblock content %}

@@ -1,0 +1,60 @@
+{% extends "blog/base.html" %}
+ {% load static %}
+ {% block title %}dashboard{% endblock title %}
+ {% block dashboardactive %} active {% endblock dashboardactive %}
+
+{% block side %}
+<div class="col-sm-2 text-white my-2 text-center">
+  <h4 class="my-5">Your's Profile</h4>
+  <h5>Welcome! {{full_name}}</h5>
+  {% for group in groups %}
+     <p>{{group.name}}</p>
+  {% endfor %}
+</div>
+{% endblock side %}
+
+  {% block content %}
+<div class="col-sm-10">
+  <h3 class="text-white my-5">Dashboard Page</h3>
+  {% if perms.blog.add_post %}
+      <a href="{% url 'addpost' %}" class="btn btn-warning btn-sm">Add Post</a>
+      {% endif %}
+  <h4 class="text-center alert alert-info mt-3">Show Post Information</h4>
+  {% if posts %}
+
+  <table class="table table-hover bg-white">
+    <thead>
+      <tr class="text-center">
+        <th scope="col" style="width:25%">Title</th>
+        <th scope="col" style="width:55%">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for post in posts %}
+      <tr>
+        <td><a href="/blogpost/{{post.id}}"><b class="text-danger">{{post.title}}</b></a></td>
+        <td>{{post.desc|slice:100}}<br> <a href="/blogpost/{{post.id}}" class="text-dark"><button class="btn btn-outline-primary btn-sm">Read More...</button></a> 
+        </td>
+        <td class="text-center">
+      {% if perms.blog.update_post %}
+      <a href="{% url 'updatepost' post.id %}" class="btn btn-warning btn-sm">Edit</a>
+      {% endif %}
+      
+          {% if perms.blog.delete_post %}
+          <form action="{% url 'deletepost' post.id %}" method="post" class="d-inline">
+           {% csrf_token %}
+           <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+          </form>
+          {% endif %}
+       </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+  <p>
+   
+  </p>
+</div>
+
+{% endblock content %}
